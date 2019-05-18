@@ -1,1 +1,26 @@
-
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        map <int,int> map1;
+        map <int,int>::iterator it;
+        int len=nums.size();
+        for(int i=0;i<len;i++)
+        {
+            map1.insert(pair<int,int>(nums[i],i));
+        }
+        vector <int> v;
+        for(int i=0;i<len;i++)
+        {
+            int rem=target-nums[i];
+            it=map1.find(rem);
+            if(it!=map1.end() && it->second!=i)
+            {
+                v.push_back(i);
+                v.push_back(it->second);
+                break;
+            }
+        }
+        return v;
+    }
+};
